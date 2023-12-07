@@ -1,3 +1,7 @@
+# Web store with Midtrans Payment.
+
+Create a simple e-commerce or web store using Next.js, and integrate with Midtrans for its payment gateway.
+
 ## Getting Started
 
 ```bash
