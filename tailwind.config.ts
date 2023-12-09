@@ -1,4 +1,5 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
+const plugin = require('tailwindcss/plugin');
 
 const config: Config = {
   content: [
@@ -6,15 +7,19 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-    },
-  },
-  plugins: [],
-}
-export default config
+  theme: {},
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const utilities = {
+        '.main-bg': {
+          background: 'url(/liquid-cheese.png) no-repeat',
+          'background-size': 'cover',
+          'background-position': 'center',
+        },
+      };
+
+      addUtilities(utilities);
+    }),
+  ],
+};
+export default config;

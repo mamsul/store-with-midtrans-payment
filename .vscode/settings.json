@@ -9,5 +9,12 @@
   "[typescriptreact]": {
     "editor.codeActionsOnSave": { "source.organizeImports": true }
   },
-  "css.customData": ["./.vscode/css-data.json"]
+  "css.customData": [
+    "./.vscode/css-data.json"
+  ],
+  "[typescript][typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  }
 }
