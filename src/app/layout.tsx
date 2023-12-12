@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <main className="h-screen w-full py-10 main-bg">
-          <div className="mx-auto h-full max-w-7xl overflow-hidden rounded-md bg-white/40 p-5 backdrop-blur-sm">
+          <div className="mx-auto h-full max-w-7xl overflow-hidden rounded-lg bg-white/40 p-5 backdrop-blur-sm">
             <Navbar />
 
             {children}

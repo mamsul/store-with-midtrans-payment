@@ -6,7 +6,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'fakestoreapi.com',
         port: '',
-        pathname: '/img/81fPKd-2AYL._AC_SL1500_.jpg',
+        pathname: '/img/**',
       },
     ],
   },

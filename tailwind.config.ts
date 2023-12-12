@@ -9,7 +9,11 @@ const config: Config = {
   ],
   theme: {},
   plugins: [
-    plugin(function ({ addUtilities }) {
+    plugin(function ({
+      addUtilities,
+    }: {
+      addUtilities: (utilities: object) => void;
+    }) {
       const utilities = {
         '.main-bg': {
           background: 'url(/liquid-cheese.png) no-repeat',
