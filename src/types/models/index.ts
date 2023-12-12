@@ -6,3 +6,10 @@ export interface IProduct {
   description: string;
   image: string;
 }
+
+export interface ICheckout {
+  id: number;
+  title: string;
+  price: number;
+  quantity: number;
+}
