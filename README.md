@@ -9,6 +9,8 @@ Create a simple e-commerce or web store using Next.js, and integrate with Midtra
    ssh: git clone git@github.com:mamsul/estore-midtrans.git
    https: git clone https://github.com/mamsul/estore-midtrans.git
 
+  create .env file
+
   npm install
   npm run dev
 
