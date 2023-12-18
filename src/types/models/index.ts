@@ -7,9 +7,26 @@ export interface IProduct {
   image: string;
 }
 
-export interface ICheckout {
+export interface ICartProduct extends IProduct {
+  count: number;
+  status: 'pending' | 'process' | 'paid';
+}
+
+export interface ICustomer {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  address: string;
+}
+
+export interface IItemDetail {
   id: number;
-  title: string;
+  name: string;
   price: number;
   quantity: number;
+}
+
+export interface IProductCheckout {
+  customer: ICustomer;
+  products: IItemDetail[];
 }

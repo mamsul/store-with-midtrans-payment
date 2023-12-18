@@ -8,26 +8,34 @@ const snap = new Midtrans.Snap({
 });
 
 export async function POST(request) {
-  const { id, title, price, quantity } = await request.json();
+  const { customer, products } = await request.json();
+  const dateNow = Date.now();
+
+  const grossAmount = products?.reduce((acc, product) => {
+    return acc + product.price * product.quantity;
+  }, 0);
 
   const parameter = {
     transaction_details: {
-      order_id: id,
-      gross_amount: price * quantity,
+      order_id: `order-${dateNow}`,
+      gross_amount: grossAmount,
     },
-    item_details: [
-      {
-        id: id,
-        price: price,
-        quantity: quantity,
-        name: title,
-      },
-    ],
+    item_details: products,
+    customer_details: {
+      first_name: customer?.firstName ?? '',
+      last_name: customer?.lastName ?? '',
+      phone: customer?.phone ?? '',
+    },
+    shipping_address: {
+      first_name: customer?.firstName ?? '',
+      last_name: customer?.lastName ?? '',
+      email: customer?.email ?? '',
+      phone: customer?.phone ?? '',
+      address: customer?.address ?? '',
+    },
   };
 
   const token = await snap.createTransactionToken(parameter);
-
-  console.log({ token });
 
   return NextResponse.json({ token });
 }

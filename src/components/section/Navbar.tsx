@@ -1,6 +1,7 @@
-import { ShoppingCart, User } from 'lucide-react';
+import { User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import NavCart from '../navbar/NavCart';
 
 const Navbar = () => {
   return (
@@ -22,8 +23,12 @@ const Navbar = () => {
       </div>
 
       <div className="flex flex-row gap-6">
-        <ShoppingCart className="h-5 w-5 cursor-pointer transition-all duration-300 hover:-translate-y-0.5" />
-        <User className="h-5 w-5 cursor-pointer transition-all duration-300 hover:-translate-y-0.5" />
+        <Link href="/cart">
+          <NavCart />
+        </Link>
+        <Link href="/user">
+          <User className="h-5 w-5 cursor-pointer" />
+        </Link>
       </div>
     </header>
   );

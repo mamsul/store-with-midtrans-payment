@@ -3,7 +3,7 @@ import { productStore } from '@/store';
 import { IProduct } from '@/types/models';
 import Image from 'next/image';
 import Link from 'next/link';
-import ProductItemCheckoutBtn from './ProductItemCheckoutBtn';
+import { Button } from '../Button';
 import StarReview from './StarReview';
 
 type ProductItemProps = {
@@ -38,7 +38,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
           {title}
         </Link>
         <div className="mt-3 flex items-center gap-1">
-          {[1, 1, 1, 1, 0].map((item) => (
+          {[1, 2, 3, 4, 0].map((item) => (
             <StarReview key={item} value={item} />
           ))}
           <span className="ms-3 text-sm font-medium text-gray-500">120</span>
@@ -47,7 +47,11 @@ const ProductItem = ({ product }: ProductItemProps) => {
           {formatToIDR(idrPrice)}
         </span>
 
-        <ProductItemCheckoutBtn className="mt-5" />
+        <div className="mt-5 h-10 w-full">
+          <Button variant="highlight">
+            <span className="text-sm">Buy Now</span>
+          </Button>
+        </div>
       </div>
     </div>
   );

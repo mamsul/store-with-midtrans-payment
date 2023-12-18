@@ -1,24 +1,30 @@
-import { fetchAllCategories, fetchAllProducts } from '@/_action';
-import ProductCategories from '@/components/ProductCategories';
-import ProductList from '@/components/ProductList';
+import { fetchAllCategories } from '@/_action';
+import ProductCategories from '@/components/product/ProductCategories';
+import ProductContent from '@/components/section/ProductContent';
+import { Suspense } from 'react';
 
-export default async function Home() {
+const CategoryContent = async () => {
   const categories = await fetchAllCategories();
-  const products = await fetchAllProducts();
+
+  return <ProductCategories categories={categories} />;
+};
+
+type HomeProps = {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default function Home({ searchParams }: HomeProps) {
+  const { category } = searchParams;
 
   return (
-    <>
-      <section className="mt-10 flex flex-col">
-        <ProductCategories categories={categories} />
-        <h2 className="text-xl font-medium">Best Selling Items</h2>
+    <section className="mt-10 flex flex-col">
+      <div className="mb-8 w-full overflow-auto border-y border-gray-400/30 px-6 py-3">
+        <Suspense fallback={<p>Loading categories...</p>}>
+          <CategoryContent />
+        </Suspense>
+      </div>
 
-        <div className="w-full overflow-auto">
-          <ProductList
-            className="mt-8 w-max overflow-auto py-3"
-            products={products}
-          />
-        </div>
-      </section>
-    </>
+      <ProductContent category={category} />
+    </section>
   );
 }

@@ -3,8 +3,11 @@ import { IProduct } from './types/models';
 
 const http = new HttpService();
 
-export async function fetchAllProducts() {
-  const res = http.get<IProduct[]>('/products?limit=5');
+export async function fetchAllProducts({ category }: { category: string }) {
+  const apiURL = category
+    ? `/products/category/${category}`
+    : '/products?limit=4';
+  const res = http.get<IProduct[]>(apiURL);
   return res;
 }
 
