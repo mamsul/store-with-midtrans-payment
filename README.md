@@ -1,6 +1,7 @@
 # Web store with Midtrans Payment.
 
 Create a simple e-commerce or web store using Next.js, and integrate with Midtrans for its payment gateway.
+I am using zustand with persistence for cart feature, and then react-hook-form for handling customer form.
 
 ## Getting Started
 
